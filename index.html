@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Окна Houselux — концепт</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Тёплые окна ПВХ в Минске под ключ за 7 дней. Цена фиксируется и не растёт после замера.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="kp.css">
+<style>
+/* Концепт «Тёплый дом»: светлая бумага, графит и янтарный цвет тепла.
+   Одна главная мысль на всей странице: цена под ключ видна сразу и не растёт после замера. */
+:root{
+  --paper:#F6F3EE;
+  --paper-2:#ECE6DC;
+  --card:#FFFFFF;
+  --ink:#15171A;
+  --ink-2:#23262B;
+  --muted:#6A6E75;
+  --line:#E2DBCF;
+  --warm:#E0761C;
+  --warm-2:#F4A646;
+  --warm-soft:#FBEBD8;
+  --cold:#3E6FE0;
+  --ok:#1E9E57;
+  --r:20px;
+  --font-d:"Geologica",system-ui,sans-serif;
+  --font:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--font-d);font-weight:700;letter-spacing:-.025em;line-height:1.05;text-wrap:balance}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--warm)}
+.eyebrow::before{content:"";width:18px;height:2px;background:currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;border:0;cursor:pointer;font-weight:800;font-size:16px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn-warm{background:var(--warm);color:#fff;box-shadow:0 14px 30px -12px rgba(224,118,28,.75)}
+.btn-warm:hover{transform:translateY(-2px);box-shadow:0 20px 36px -12px rgba(224,118,28,.85)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#000}
+.btn-line{background:transparent;border:1.5px solid rgba(21,23,26,.2);color:var(--ink)}
+.btn-line:hover{border-color:var(--ink)}
+.btn:focus-visible,.opt:focus-visible,.sw:focus-visible,summary:focus-visible,.step-btn:focus-visible{outline:3px solid rgba(224,118,28,.45);outline-offset:3px}
+.reveal{transition:transform .9s cubic-bezier(.2,.7,.2,1),opacity .9s}
+.reveal.pre{transform:translateY(26px);opacity:.001}
+@media (prefers-reduced-motion:reduce){.reveal,.reveal.pre{transform:none;opacity:1;transition:none}html{scroll-behavior:auto}}
+
+/* верхняя строка доверия */
+.topline{background:var(--ink);color:#D9D4CB;font-size:13px}
+.topline .wrap{display:flex;justify-content:space-between;gap:16px;height:38px;align-items:center}
+.topline b{color:#fff}
+.topline span{white-space:nowrap}
+
+/* header */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.hdr{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(246,243,238,.86);backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border-bottom:1px solid transparent;transition:border-color .3s}
+.hdr.scrolled{border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:28px;height:76px}
+.logo img{height:34px;width:auto}
+.nav{display:flex;gap:26px;font-weight:600;font-size:15px;color:#43474D}
+.nav a:hover{color:var(--ink)}
+.hdr-r{margin-left:auto;display:flex;align-items:center;gap:14px}
+.hdr-phone{font-weight:800;font-size:17px;white-space:nowrap}
+.hdr-phone small{display:block;font-size:11px;font-weight:600;color:var(--muted);text-align:right}
+.msg{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;transition:transform .2s}
+.msg:hover{transform:translateY(-2px)}
+.msg svg{width:20px;height:20px;fill:#fff}
+.msg.vb{background:#7360F2}.msg.tg{background:#29A9EB}
+.hdr .btn{height:46px;padding:0 22px;font-size:14px}
+
+/* hero */
+.hero{padding:56px 0 64px;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,5vw,70px);margin:20px 0 22px}
+.hero h1 em{font-style:normal;color:var(--warm);position:relative;white-space:nowrap}
+.hero h1 em::after{content:"";position:absolute;left:0;right:0;bottom:.04em;height:.12em;background:var(--warm-soft);z-index:-1}
+.hero .lead{font-size:19px;color:#43474D;max-width:540px}
+.incl{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 32px;max-width:560px}
+.incl span{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:14px;font-weight:600}
+.incl span::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--ok) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.5'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center/10px no-repeat}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hero-note{font-size:13px;color:var(--muted);margin-top:14px}
+.facts{display:grid;grid-template-columns:repeat(4,auto);gap:28px;margin-top:40px;padding-top:28px;border-top:1px solid var(--line);justify-content:start}
+.facts b{display:block;font-family:var(--font-d);font-size:30px;font-weight:700;letter-spacing:-.02em;line-height:1}
+.facts span{font-size:13px;color:var(--muted)}
+
+/* тепловизор до/после */
+.thermo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:600/640;background:#120a2a;box-shadow:0 40px 80px -40px rgba(21,23,26,.55);user-select:none;touch-action:pan-y;max-width:100%}
+.thermo svg{position:absolute;inset:0;width:100%;height:100%}
+.thermo .after{clip-path:inset(0 0 0 var(--pos,50%))}
+.thermo .handle{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:0;z-index:3}
+.thermo .handle::before{content:"";position:absolute;top:0;bottom:0;left:-1px;width:2px;background:#fff;box-shadow:0 0 12px rgba(0,0,0,.4)}
+.thermo .knob{position:absolute;top:50%;left:0;transform:translate(-50%,-50%);width:54px;height:54px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:ew-resize;border:0}
+.thermo .knob svg{position:static;width:24px;height:24px;stroke:var(--ink);fill:none;stroke-width:2.5}
+.thermo .lbl{position:absolute;top:18px;z-index:2;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.04em;background:rgba(0,0,0,.5);color:#fff;backdrop-filter:blur(6px)}
+.thermo .lbl.l{left:18px}.thermo .lbl.r{right:18px;background:rgba(255,255,255,.92);color:var(--ink)}
+.thermo .cap{position:absolute;left:18px;right:18px;bottom:16px;z-index:2;display:flex;justify-content:space-between;align-items:end;gap:12px;color:#fff;font-size:12px}
+.thermo .scale{width:140px;height:8px;border-radius:4px;background:linear-gradient(90deg,#0b0420,#3a137a,#a3197a,#e8432a,#f8a21b,#fff6c2)}
+.thermo .scale-w{display:grid;gap:4px;font-size:11px;opacity:.9}
+.thermo .scale-w div{display:flex;justify-content:space-between}
+.thermo-hint{font-size:13px;color:var(--muted);text-align:center;margin-top:12px}
+
+/* секции */
+section.s{padding:110px 0}
+.s-head{max-width:760px;margin-bottom:48px}
+.s-head h2{font-size:clamp(32px,4vw,54px);margin-top:14px}
+.s-head p{font-size:18px;color:#4A4E55;margin-top:16px}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+
+/* цены под ключ */
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column;gap:14px;transition:transform .3s,box-shadow .3s;min-width:0}
+.pc:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(21,23,26,.45)}
+.pc .draw{height:150px;display:grid;place-items:center;background:var(--paper);border-radius:14px}
+.pc .draw svg{height:120px;width:auto}
+.pc h3{font-size:20px}
+.pc .size{font-size:13px;color:var(--muted);margin-top:-8px}
+.pc ul{list-style:none;display:grid;gap:5px;font-size:14px;color:#43474D}
+.pc li::before{content:"✓";color:var(--ok);font-weight:800;margin-right:8px}
+.pc .pr{margin-top:auto;display:flex;align-items:baseline;justify-content:space-between;gap:8px;border-top:1px dashed var(--line);padding-top:14px}
+.pc .pr b{font-family:var(--font-d);font-size:30px;font-weight:700;letter-spacing:-.02em}
+.pc .pr small{font-size:13px;color:var(--muted)}
+.pc .btn{height:48px;font-size:14px;width:100%}
+.pc.hot{border-color:var(--warm);box-shadow:0 0 0 1px var(--warm)}
+.pc .badge{align-self:flex-start;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--warm);color:#fff;padding:5px 10px;border-radius:999px;margin-bottom:-4px}
+
+/* сравнение с рынком */
+.compare{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.cmp-row{display:grid;grid-template-columns:1.1fr 1fr 1fr;border-bottom:1px solid var(--line)}
+.cmp-row:last-child{border-bottom:0}
+.cmp-row>div{padding:18px 22px;font-size:15px;min-width:0}
+.cmp-row.h>div{font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--paper)}
+.cmp-row.h .us{color:var(--warm)}
+.cmp-row .k{font-weight:700}
+.cmp-row .them{color:#7A7E85}
+.cmp-row .us{background:linear-gradient(90deg,rgba(224,118,28,.07),rgba(224,118,28,.02));font-weight:600}
+.cmp-row .us::before{content:"✓ ";color:var(--ok);font-weight:800}
+.cmp-row.h .us::before{content:""}
+.cmp-note{font-size:12px;color:var(--muted);padding:12px 22px;background:var(--paper)}
+
+/* квиз */
+.quiz-sec{background:var(--ink);color:#fff;position:relative;overflow:hidden}
+.quiz-sec::before{content:"";position:absolute;right:-200px;top:-200px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(224,118,28,.32),transparent 65%)}
+.quiz-sec .s-head p{color:#B9B4AB}
+.quiz{position:relative;display:grid;grid-template-columns:1fr 340px;gap:24px;align-items:start}
+.qbox{background:#1E2126;border:1px solid rgba(255,255,255,.08);border-radius:26px;padding:34px;min-height:520px;display:flex;flex-direction:column;min-width:0}
+.qprog{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.qbar{flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,.1);overflow:hidden}
+.qbar i{display:block;height:100%;width:20%;background:linear-gradient(90deg,var(--warm),var(--warm-2));border-radius:3px;transition:width .5s cubic-bezier(.2,.7,.2,1)}
+.qprog span{font-size:13px;color:#B9B4AB;white-space:nowrap;font-weight:600}
+.qstep{display:none;animation:qin .45s cubic-bezier(.2,.7,.2,1)}
+.qstep.on{display:block}
+@keyframes qin{from{opacity:0;transform:translateX(18px)}}
+.qstep h3{font-size:clamp(22px,2.4vw,30px);margin-bottom:6px}
+.qstep .hint{color:#B9B4AB;font-size:15px;margin-bottom:22px}
+.opts{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.opt{background:#262A30;border:1.5px solid rgba(255,255,255,.08);border-radius:18px;padding:18px;cursor:pointer;text-align:left;transition:border-color .2s,background .2s,transform .15s;display:flex;flex-direction:column;gap:10px;color:#fff;min-width:0}
+.opt:hover{border-color:rgba(255,255,255,.3)}
+.opt:active{transform:scale(.98)}
+.opt.on{border-color:var(--warm);background:rgba(224,118,28,.12)}
+.opt svg{width:44px;height:44px;stroke:#fff;fill:none;stroke-width:1.6}
+.opt b{font-size:16px}
+.opt small{color:#B9B4AB;font-size:13px}
+.items{display:grid;gap:10px}
+.it{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;background:#262A30;border:1.5px solid rgba(255,255,255,.08);border-radius:16px;padding:12px 14px;transition:border-color .2s;min-width:0}
+.it.on{border-color:var(--warm)}
+.it svg{width:44px;height:44px;stroke:#fff;fill:none;stroke-width:1.5}
+.it b{display:block;font-size:15px}
+.it small{color:#B9B4AB;font-size:13px}
+.cnt{display:flex;align-items:center;gap:6px}
+.cnt button{width:36px;height:36px;border-radius:50%;border:1.5px solid rgba(255,255,255,.2);background:transparent;color:#fff;font-size:18px;cursor:pointer;line-height:1}
+.cnt button:hover{border-color:#fff}
+.cnt output{min-width:30px;text-align:center;font-weight:800;font-size:17px}
+.qfoot{margin-top:auto;padding-top:26px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.back{background:none;border:0;color:#B9B4AB;font-weight:700;cursor:pointer;font-size:15px}
+.back:hover{color:#fff}
+.back[hidden]{display:none}
+.qmini{display:none;font-weight:700;color:#B9B4AB;font-size:14px;margin-left:auto}
+.qmini b{color:#fff;font-family:var(--font-d);font-size:20px}
+.gift{display:flex;gap:14px;align-items:center;background:linear-gradient(90deg,rgba(224,118,28,.18),rgba(224,118,28,.05));border:1px solid rgba(224,118,28,.4);border-radius:16px;padding:14px 16px;margin-top:14px;font-size:14px}
+.gift svg{width:34px;height:34px;flex:none;stroke:var(--warm-2);fill:none;stroke-width:1.8}
+.toggle{display:flex;gap:14px;align-items:center;background:#262A30;border:1.5px solid rgba(255,255,255,.08);border-radius:16px;padding:14px 16px;cursor:pointer;margin-top:10px}
+.toggle input{appearance:none;width:44px;height:26px;border-radius:13px;background:rgba(255,255,255,.18);position:relative;flex:none;cursor:pointer;transition:background .2s}
+.toggle input::after{content:"";position:absolute;left:3px;top:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s}
+.toggle input:checked{background:var(--warm)}
+.toggle input:checked::after{transform:translateX(18px)}
+.toggle b{display:block;font-size:15px}
+.toggle small{color:#B9B4AB;font-size:13px}
+.field{width:100%;height:58px;border-radius:16px;border:1.5px solid rgba(255,255,255,.14);background:#262A30;padding:0 18px;font-size:17px;color:#fff;outline:none;margin-top:10px}
+.field:focus{border-color:var(--warm)}
+.ch{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.ch .opt{padding:14px;align-items:center;text-align:center;flex-direction:row;justify-content:center;gap:8px}
+.ch .opt svg{width:22px;height:22px;fill:#fff;stroke:none}
+.agree{font-size:12px;color:#8E8A83;margin-top:12px}
+.done{text-align:center;padding:30px 0}
+.done .ok{width:72px;height:72px;border-radius:50%;background:var(--ok);display:grid;place-items:center;margin:0 auto 20px}
+.done .ok svg{width:36px;height:36px;stroke:#fff;fill:none;stroke-width:3}
+.next-steps{list-style:none;display:grid;gap:10px;max-width:420px;margin:24px auto 0;text-align:left;counter-reset:n}
+.next-steps li{display:flex;gap:12px;align-items:flex-start;color:#D9D4CB;font-size:15px}
+.next-steps li::before{counter-increment:n;content:counter(n);width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.1);display:grid;place-items:center;font-size:13px;font-weight:800;flex:none}
+/* живая цена */
+.live{position:sticky;top:100px;background:var(--paper);color:var(--ink);border-radius:26px;padding:28px}
+.live small{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.live .sum{font-family:var(--font-d);font-size:46px;font-weight:700;letter-spacing:-.03em;line-height:1.05;margin:6px 0 4px}
+.live .sum span{font-size:20px;color:var(--muted);font-weight:500;margin-right:4px}
+.live .inst{font-size:15px;color:#43474D}
+.live .inst b{color:var(--warm)}
+.live ul{list-style:none;margin:18px 0;padding:16px 0;border-block:1px dashed var(--line);display:grid;gap:7px;font-size:14px;min-height:60px}
+.live li{display:flex;justify-content:space-between;gap:10px}
+.live li span:last-child{font-weight:700;white-space:nowrap}
+.live li.free span:last-child{color:var(--ok)}
+.live .empty{color:var(--muted)}
+.live .fine{font-size:12px;color:var(--muted)}
+.live .lock{display:flex;gap:10px;align-items:center;font-size:13px;font-weight:700;margin-top:14px;padding:12px 14px;border-radius:14px;background:#fff}
+.live .lock svg{width:22px;height:22px;stroke:var(--ok);fill:none;stroke-width:2;flex:none}
+
+/* тепло: разрез профиля */
+.warm-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.profile{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:30px;position:relative}
+.profile svg{width:100%;height:auto}
+.benefits{display:grid;gap:14px}
+.bn{display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:start;padding:20px;border-radius:18px;background:var(--card);border:1px solid var(--line)}
+.bn b{font-family:var(--font-d);font-size:30px;font-weight:700;color:var(--warm);letter-spacing:-.02em;line-height:1;min-width:110px}
+.bn h3{font-size:18px;margin-bottom:4px}
+.bn p{font-size:14px;color:var(--muted)}
+
+/* процесс 7 дней */
+.days{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.days::before{content:"";position:absolute;left:4%;right:4%;top:34px;height:2px;background:repeating-linear-gradient(90deg,var(--warm) 0 8px,transparent 8px 16px)}
+.day{position:relative;text-align:left}
+.day .dn{width:68px;height:68px;border-radius:50%;background:var(--card);border:2px solid var(--warm);display:grid;place-items:center;font-family:var(--font-d);font-weight:700;font-size:13px;text-align:center;line-height:1.1;margin-bottom:18px;position:relative;z-index:1}
+.day .dn b{display:block;font-size:22px}
+.day h3{font-size:20px;margin-bottom:6px}
+.day p{font-size:15px;color:#4A4E55}
+
+/* направления */
+.dirs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.dir{position:relative;border-radius:var(--r);overflow:hidden;background:var(--card);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;min-width:0}
+.dir:hover{transform:translateY(-6px);box-shadow:0 30px 60px -36px rgba(21,23,26,.45)}
+.dir .art{height:170px;background:var(--paper-2);display:grid;place-items:center;overflow:hidden}
+.dir .art svg{width:100%;height:100%}
+.dir .bd{padding:20px 22px 22px;display:flex;flex-direction:column;gap:6px;flex:1}
+.dir h3{font-size:20px}
+.dir p{font-size:14px;color:var(--muted);flex:1}
+.dir .from{font-weight:800;margin-top:8px;display:flex;justify-content:space-between;align-items:center}
+.dir .from span{color:var(--warm)}
+
+/* цвета */
+.colors{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.cwin{background:var(--paper-2);border-radius:28px;padding:40px;display:grid;place-items:center;transition:background .5s}
+.cwin svg{width:min(360px,100%);height:auto}
+.cwin .fr{transition:fill .5s}
+.sws{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 12px}
+.sw{width:58px;height:58px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px var(--line);cursor:pointer;transition:transform .2s,box-shadow .2s}
+.sw:hover{transform:scale(1.08)}
+.sw.on{box-shadow:0 0 0 2px var(--warm)}
+.swname{font-weight:800;font-size:18px}
+
+/* оплата */
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pay>div{border-radius:26px;padding:36px;min-width:0}
+.pay .p1{background:var(--ink);color:#fff}
+.pay .p2{background:var(--warm-soft)}
+.pay b{font-family:var(--font-d);font-size:clamp(44px,5vw,68px);font-weight:700;letter-spacing:-.03em;line-height:1;display:block}
+.pay h3{font-size:22px;margin:12px 0 8px}
+.pay p{font-size:15px;opacity:.85;max-width:420px}
+.pay .p1 b span{color:var(--warm-2)}
+
+/* FAQ */
+.faq-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 48px 22px 0;font-weight:700;font-size:18px;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;font-size:20px;font-weight:500;transition:transform .25s,background .25s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg);background:var(--warm-soft)}
+.faq details p{color:#4A4E55;padding:0 0 22px;max-width:640px}
+
+/* финальный призыв */
+.final{background:var(--ink);color:#fff;border-radius:32px;padding:64px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.final::after{content:"";position:absolute;left:-120px;bottom:-200px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(224,118,28,.35),transparent 65%)}
+.final h2{font-size:clamp(34px,4.4vw,60px);position:relative;z-index:1}
+.final p{color:#B9B4AB;font-size:18px;margin-top:14px;position:relative;z-index:1}
+.final form{position:relative;z-index:1;background:#1E2126;border-radius:22px;padding:26px}
+.final .field{margin-top:0}
+.final .btn{width:100%;margin-top:12px}
+
+.ftr{padding:56px 0 40px;font-size:14px;color:var(--muted)}
+.ftr .wrap{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:32px}
+.ftr img{height:30px;width:auto;margin-bottom:14px}
+.ftr h4{color:var(--ink);font-size:14px;margin-bottom:10px}
+.ftr a:hover{color:var(--ink)}
+
+/* удержание */
+.resume{position:fixed;left:50%;bottom:24px;transform:translate(-50%,160%);z-index:70;display:flex;align-items:center;gap:14px;background:var(--ink);color:#fff;padding:10px 10px 10px 20px;border-radius:999px;box-shadow:0 20px 40px -10px rgba(0,0,0,.5);transition:transform .45s cubic-bezier(.2,.8,.2,1);visibility:hidden;max-width:calc(100% - 32px)}
+.resume.show{transform:translate(-50%,0);visibility:visible}
+.resume span{font-size:14px;font-weight:600}
+.resume b{color:var(--warm-2)}
+.resume .btn{height:42px;padding:0 18px;font-size:14px}
+.modal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:16px;background:rgba(21,23,26,.55);backdrop-filter:blur(6px);opacity:0;visibility:hidden;transition:opacity .3s}
+.modal.show{opacity:1;visibility:visible}
+.mbox{background:var(--paper);border-radius:28px;max-width:520px;width:100%;padding:36px;position:relative;transform:translateY(16px);transition:transform .35s}
+.modal.show .mbox{transform:none}
+.mbox h3{font-size:28px;margin:10px 0 10px}
+.mbox p{color:#4A4E55}
+.mbox .x{position:absolute;right:16px;top:16px;width:40px;height:40px;border-radius:50%;border:0;background:var(--card);cursor:pointer;font-size:22px}
+.mbox .row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.mbox .row .btn{width:100%}
+.toast{visibility:hidden;position:fixed;left:50%;bottom:28px;transform:translate(-50%,160%);background:var(--ink);color:#fff;padding:16px 22px;border-radius:16px;font-size:14px;font-weight:600;z-index:110;transition:transform .45s cubic-bezier(.2,.8,.2,1);max-width:calc(100% - 32px)}
+.toast.show{visibility:visible;transform:translate(-50%,0)}
+.mbar{display:none}
+
+/* KP в фирменном тёплом цвете */
+.kp{--accent:#E0761C;--accent-2:#B85E12}
+.kp .will-card::after{background:radial-gradient(circle,rgba(224,118,28,.35),transparent 70%)}
+.kp .col-lbl.will{background:var(--warm-soft);color:#B85E12}
+.market{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:0 0 40px}
+.market div{background:var(--paper);border-radius:16px;padding:18px;font-size:14px;color:#43474D}
+.market b{display:block;font-family:var(--font-d);font-size:26px;color:var(--ink);margin-bottom:4px}
+.usp-box{border:2px solid var(--warm);border-radius:20px;padding:22px 26px;margin-bottom:40px;display:flex;gap:18px;align-items:center;background:#fff}
+.usp-box b{font-family:var(--font-d);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--warm);white-space:nowrap}
+.usp-box p{font-family:var(--font-d);font-size:clamp(18px,2vw,24px);font-weight:600;letter-spacing:-.01em}
+
+@media (max-width:1080px){
+  .nav,.hdr-phone small{display:none}
+  .hero .wrap,.warm-grid,.colors,.faq-wrap,.final{grid-template-columns:1fr}
+  .thermo{max-width:560px;margin:0 auto}
+  .prices{grid-template-columns:1fr 1fr}
+  .quiz{grid-template-columns:1fr}
+  .live{position:relative;top:0}
+  .dirs{grid-template-columns:1fr 1fr}
+  .days{grid-template-columns:1fr 1fr;row-gap:36px}
+  .days::before{display:none}
+  .market{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .wrap{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+  .topline .wrap{justify-content:center}
+  .topline span:not(:first-child){display:none}
+  .hdr .wrap{height:62px;gap:10px}
+  .logo img{height:26px}
+  .hdr-phone,.hdr .btn{display:none}
+  .hero{padding:30px 0 40px}
+  .hero .wrap{gap:36px}
+  .hero .lead{font-size:17px}
+  .hero-btns .btn{width:100%}
+  .facts{grid-template-columns:1fr 1fr;gap:20px}
+  section.s{padding:72px 0}
+  .s-head{margin-bottom:32px}
+  .s-head p{font-size:16px}
+  .prices{grid-template-columns:1fr}
+  .cmp-row{grid-template-columns:1fr}
+  .cmp-row.h{display:none}
+  .cmp-row>div{padding:10px 18px}
+  .cmp-row .k{padding-top:16px;background:var(--paper)}
+  .cmp-row .them::before{content:"Обычно: ";font-weight:700}
+  .qbox{padding:20px;min-height:0;border-radius:20px}
+  .opts{grid-template-columns:1fr 1fr}
+  .opts .opt:last-child:nth-child(odd){grid-column:1/-1}
+  .it{grid-template-columns:40px 1fr;row-gap:10px}
+  .it svg{width:36px;height:36px}
+  .it .cnt{grid-column:1/-1;justify-content:flex-end}
+  .ch{grid-template-columns:1fr}
+  .qmini{display:block}
+  .qfoot .btn{padding:0 22px}
+  .dirs{grid-template-columns:1fr}
+  .days{grid-template-columns:1fr}
+  .bn{grid-template-columns:1fr;gap:8px}
+  .pay{grid-template-columns:1fr}
+  .pay>div{padding:26px}
+  .final{padding:30px 22px;border-radius:24px}
+  .ftr .wrap{grid-template-columns:1fr}
+  .ftr{padding-bottom:110px}
+  .usp-box{flex-direction:column;align-items:flex-start}
+  .resume{bottom:84px}
+  .mbar{display:grid;grid-template-columns:52px 52px 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px max(12px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(12px,env(safe-area-inset-left,0px));background:rgba(246,243,238,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+  .mbar a{height:52px;border-radius:16px;display:grid;place-items:center}
+  .mbar a svg{width:22px;height:22px;fill:#fff}
+  .mbar .call{background:var(--ink)}
+  .mbar .vb{background:#7360F2}
+  .mbar .btn{height:52px;border-radius:16px;font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG-символы: схемы окон в стиле архитектурного чертежа (пунктир — сторона открывания) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="w1" viewBox="0 0 80 110"><rect x="4" y="4" width="72" height="102" rx="2"/><rect x="11" y="11" width="58" height="88"/><path d="M11 11 69 55 11 99" stroke-dasharray="4 4"/></symbol>
+    <symbol id="w2" viewBox="0 0 120 110"><rect x="4" y="4" width="112" height="102" rx="2"/><path d="M60 4v102"/><rect x="11" y="11" width="42" height="88"/><rect x="67" y="11" width="42" height="88"/><path d="M109 11 67 55 109 99" stroke-dasharray="4 4"/></symbol>
+    <symbol id="w3" viewBox="0 0 160 110"><rect x="4" y="4" width="152" height="102" rx="2"/><path d="M56 4v102M104 4v102"/><rect x="11" y="11" width="38" height="88"/><rect x="63" y="11" width="34" height="88"/><rect x="111" y="11" width="38" height="88"/><path d="M11 11 49 55 11 99M149 11 111 55 149 99" stroke-dasharray="4 4"/></symbol>
+    <symbol id="wb" viewBox="0 0 140 130"><rect x="4" y="4" width="132" height="122" rx="2"/><path d="M48 4v122M48 74h88"/><rect x="11" y="11" width="30" height="108"/><rect x="55" y="11" width="74" height="56"/><path d="M11 11 41 65 11 119" stroke-dasharray="4 4"/></symbol>
+    <symbol id="wl" viewBox="0 0 160 110"><path d="M4 106V30h152v76"/><path d="M4 30h152M4 60h152"/><path d="M44 30v30M84 30v30M124 30v30"/><path d="M14 106V74h132v32"/></symbol>
+    <symbol id="wd" viewBox="0 0 80 130"><rect x="10" y="4" width="60" height="122" rx="2"/><rect x="18" y="12" width="44" height="66"/><rect x="18" y="86" width="44" height="32"/><circle cx="58" cy="82" r="2.5"/></symbol>
+    <symbol id="wp" viewBox="0 0 160 110"><path d="M4 106V24L80 4l76 20v82z"/><path d="M44 14v92M80 4v102M116 14v92M4 60h152"/></symbol>
+    <symbol id="i-flat" viewBox="0 0 48 48"><rect x="10" y="6" width="28" height="38" rx="2"/><path d="M16 14h5M27 14h5M16 22h5M27 22h5M16 30h5M27 30h5M21 44v-7h6v7"/></symbol>
+    <symbol id="i-house" viewBox="0 0 48 48"><path d="M6 22 24 8l18 14"/><path d="M10 19v24h28V19"/><path d="M20 43V31h8v12"/></symbol>
+    <symbol id="i-office" viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="28" rx="2"/><path d="M18 14V8h12v6M6 26h36"/></symbol>
+    <symbol id="i-fast" viewBox="0 0 48 48"><path d="M26 6 12 28h11l-3 14 16-22H25z"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="31" rx="3"/><path d="M7 19h34M16 6v8M32 6v8"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 48 48"><path d="M4 24s7-12 20-12 20 12 20 12-7 12-20 12S4 24 4 24z"/><circle cx="24" cy="24" r="5"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 48 48"><rect x="7" y="18" width="34" height="9"/><path d="M10 27v15h28V27M24 18v24M24 18s-4-10-10-8 0 8 10 8zm0 0s4-10 10-8 0 8-10 8z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-tg" viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.5 13.2 1.8 11.7c-1-.3-1-1 .2-1.5L20.6 3c.9-.3 1.6.2 1.3 1.3z"/></symbol>
+    <symbol id="i-vb" viewBox="0 0 24 24"><path d="M11.4 1C8 1 3.2 1.8 2.3 6.3c-.6 2.5-.5 5.4.2 8 .6 2.2 2 3.6 4 4.3v3.1c0 .6.7.9 1.1.4l2.9-3c2.8.1 6.8-.4 8.7-2 2.4-2 2.7-6.2 2-9.8C20.5 2.6 16.3 1 11.4 1zm4.8 13.9c-.4.6-1.1 1.2-1.9 1-2.9-.8-6.7-4.4-7.6-7.4-.2-.8.4-1.5 1-1.9.5-.3 1.1-.1 1.4.3l1 1.4c.3.4.2 1-.2 1.3l-.4.3c.6 1.6 1.8 2.8 3.4 3.4l.3-.4c.3-.4.9-.5 1.3-.2l1.4 1c.4.3.6.9.3 1.2z"/></symbol>
+    <symbol id="i-ph" viewBox="0 0 24 24"><path d="M6.6 10.8a15.5 15.5 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></symbol>
+  </defs>
+</svg>
+
+<div class="topline"><div class="wrap">
+  <span>Замер <b>бесплатно</b> — даже в выходные</span>
+  <span>Работаем <b>более 15 лет</b></span>
+  <span>Минск · ежедневно 9:00–20:00</span>
+</div></div>
+
+<header class="hdr" id="hdr">
+  <div class="wrap">
+    <a href="#" class="logo"><img src="assets/logo.png" alt="Houselux — студия окон и дверей"></a>
+    <nav class="nav"><a href="#prices">Цены</a><a href="#quiz">Расчёт</a><a href="#warm">Почему тепло</a><a href="#process">Как работаем</a><a href="#faq">Вопросы</a></nav>
+    <div class="hdr-r">
+      <a class="hdr-phone" href="tel:+375295672453">+375 29 567-24-53<small>ежедневно 9:00–20:00</small></a>
+      <a class="msg vb" href="viber://chat?number=375295672453" aria-label="Viber"><svg><use href="#i-vb"/></svg></a>
+      <a class="msg tg" href="https://telegram.me/houselux_by" target="_blank" rel="noopener" aria-label="Telegram"><svg><use href="#i-tg"/></svg></a>
+      <a class="btn btn-warm" href="#quiz" data-quiz>Рассчитать цену</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- 1. ПЕРВЫЙ ЭКРАН: обещание + доказательство -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Окна ПВХ в Минске под ключ</div>
+      <h1>Тёплые окна за <em>7&nbsp;дней</em>. Цена не растёт после замера</h1>
+      <p class="lead">Называем полную цену сразу — с монтажом, отливом и подоконником. Фиксируем её в договоре до начала работ.</p>
+      <div class="incl"><span>Замер</span><span>Доставка</span><span>Демонтаж</span><span>Монтаж по ГОСТу</span><span>Отлив и подоконник</span><span>Уборка</span></div>
+      <div class="hero-btns">
+        <a class="btn btn-warm" href="#quiz" data-quiz>Узнать цену за 1 минуту →</a>
+        <a class="btn btn-line" href="#lead">Вызвать замерщика</a>
+      </div>
+      <p class="hero-note">5 вопросов · без звонка · рассрочка 0% до 3 месяцев</p>
+      <div class="facts">
+        <div><b>15+</b><span>лет на рынке</span></div>
+        <div><b>до 7</b><span>дней от замера до окон</span></div>
+        <div><b>0 BYN</b><span>доплат после замера</span></div>
+        <div><b>0%</b><span>рассрочка до 3 мес.</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="thermo" id="thermo" style="--pos:50%">
+        <!-- ДО: старое окно в тепловизоре — тепло уходит через раму и стекло -->
+        <svg viewBox="0 0 600 640" aria-hidden="true">
+          <defs>
+            <linearGradient id="wallA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0b3d"/><stop offset="1" stop-color="#2b0f57"/></linearGradient>
+            <radialGradient id="glassA" cx=".5" cy=".55" r=".7"><stop offset="0" stop-color="#ffe27a"/><stop offset=".35" stop-color="#f7a11a"/><stop offset=".7" stop-color="#e3462b"/><stop offset="1" stop-color="#a3197a"/></radialGradient>
+            <radialGradient id="haloA" cx=".5" cy=".5" r=".55"><stop offset=".6" stop-color="#e3462b" stop-opacity=".85"/><stop offset="1" stop-color="#2b0f57" stop-opacity="0"/></radialGradient>
+            <filter id="blurA"><feGaussianBlur stdDeviation="9"/></filter>
+            <filter id="blurB"><feGaussianBlur stdDeviation="4"/></filter>
+          </defs>
+          <rect width="600" height="640" fill="url(#wallA)"/>
+          <g opacity=".35" stroke="#5b2a9a" stroke-width="2"><path d="M0 160h600M0 320h600M0 480h600"/><path d="M150 0v160M450 0v160M300 160v160M150 320v160M450 320v160M300 480v160"/></g>
+          <rect x="70" y="60" width="460" height="530" rx="30" fill="url(#haloA)" filter="url(#blurA)"/>
+          <rect x="110" y="96" width="380" height="460" fill="#c9325a"/>
+          <rect x="132" y="118" width="160" height="416" fill="url(#glassA)"/>
+          <rect x="308" y="118" width="160" height="416" fill="url(#glassA)"/>
+          <g filter="url(#blurB)" stroke="#fff3b0" stroke-width="7" fill="none" opacity=".95">
+            <path d="M112 98h376M112 554h376M112 98v456M488 98v456M300 98v456"/>
+          </g>
+          <rect x="96" y="556" width="408" height="22" fill="#f7a11a" filter="url(#blurB)"/>
+          <g font-family="Geologica,sans-serif" font-size="15" fill="#fff" font-weight="700">
+            <circle cx="212" cy="300" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M212 284v8M212 308v8M196 300h8M220 300h8" stroke="#fff" stroke-width="2"/>
+            <text x="228" y="296">+12,6°</text>
+            <circle cx="300" cy="140" r="9" fill="none" stroke="#fff" stroke-width="2"/><text x="316" y="136">+16,1°</text>
+          </g>
+        </svg>
+        <!-- ПОСЛЕ: тёплое окно — снаружи холодно, тепло остаётся дома -->
+        <svg class="after" viewBox="0 0 600 640" aria-hidden="true">
+          <defs>
+            <linearGradient id="wallB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#14093a"/><stop offset="1" stop-color="#210c4d"/></linearGradient>
+            <linearGradient id="glassB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#160b45"/><stop offset=".6" stop-color="#25106a"/><stop offset="1" stop-color="#3a137a"/></linearGradient>
+          </defs>
+          <rect width="600" height="640" fill="url(#wallB)"/>
+          <g opacity=".35" stroke="#3d1f7a" stroke-width="2"><path d="M0 160h600M0 320h600M0 480h600"/><path d="M150 0v160M450 0v160M300 160v160M150 320v160M450 320v160M300 480v160"/></g>
+          <rect x="110" y="96" width="380" height="460" rx="4" fill="#2c1265"/>
+          <rect x="132" y="118" width="160" height="416" fill="url(#glassB)"/>
+          <rect x="308" y="118" width="160" height="416" fill="url(#glassB)"/>
+          <path d="M140 126l60 60M320 126l90 90" stroke="#5a3aa8" stroke-width="3" opacity=".6"/>
+          <rect x="96" y="556" width="408" height="22" fill="#3a137a"/>
+          <g font-family="Geologica,sans-serif" font-size="15" fill="#fff" font-weight="700">
+            <circle cx="388" cy="300" r="9" fill="none" stroke="#fff" stroke-width="2"/><path d="M388 284v8M388 308v8M372 300h8M396 300h8" stroke="#fff" stroke-width="2"/>
+            <text x="404" y="296">−3,8°</text>
+            <circle cx="300" cy="140" r="9" fill="none" stroke="#fff" stroke-width="2"/><text x="316" y="136">−2,9°</text>
+          </g>
+        </svg>
+        <span class="lbl l">Старое окно</span>
+        <span class="lbl r">Окно Houselux</span>
+        <div class="handle"><button class="knob" id="knob" aria-label="Сравнить окна: двигайте влево и вправо" role="slider" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><svg viewBox="0 0 24 24"><path d="m9 6-6 6 6 6M15 6l6 6-6 6"/></svg></button></div>
+        <div class="cap">
+          <div class="scale-w"><div class="scale"></div><div><span>холодно</span><span>тепло уходит</span></div></div>
+          <span style="opacity:.75">вид снаружи, зима</span>
+        </div>
+      </div>
+      <p class="thermo-hint">Потяните ползунок: так окна выглядят в тепловизоре. Яркое — это ваше тепло, которое греет улицу. <span style="opacity:.7">Иллюстрация.</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ЦЕНЫ ПОД КЛЮЧ: снимаем главный страх -->
+<section class="s" id="prices" style="padding-top:40px">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div class="eyebrow">Цены под ключ</div>
+      <h2>Это полная цена. Не «от 85 BYN за профиль»</h2>
+      <p>В каждую цену уже входят замер, доставка, демонтаж старого окна, монтаж, отлив и подоконник. Профиль 70 мм, двухкамерный стеклопакет.</p>
+    </div>
+    <div class="prices reveal">
+      <article class="pc"><div class="draw"><svg fill="none" stroke="#15171A" stroke-width="2.2"><use href="#w1"/></svg></div><h3>Одностворчатое</h3><div class="size">1430 × 650 мм</div><ul><li>Монтаж и демонтаж</li><li>Отлив и подоконник</li><li>Доставка и замер</li></ul><div class="pr"><small>под ключ</small><b>от 250 BYN</b></div><a class="btn btn-line" href="#quiz" data-quiz data-pick="w1">Рассчитать мои окна</a></article>
+      <article class="pc hot"><span class="badge">Чаще всего</span><div class="draw"><svg fill="none" stroke="#15171A" stroke-width="2.2"><use href="#w2"/></svg></div><h3>Двустворчатое</h3><div class="size">1430 × 1150 мм</div><ul><li>Монтаж и демонтаж</li><li>Отлив и подоконник</li><li>Доставка и замер</li></ul><div class="pr"><small>под ключ</small><b>от 590 BYN</b></div><a class="btn btn-warm" href="#quiz" data-quiz data-pick="w2">Рассчитать мои окна</a></article>
+      <article class="pc"><div class="draw"><svg fill="none" stroke="#15171A" stroke-width="2.2"><use href="#w3"/></svg></div><h3>Трёхстворчатое</h3><div class="size">1430 × 2020 мм</div><ul><li>Монтаж и демонтаж</li><li>Отлив и подоконник</li><li>Доставка и замер</li></ul><div class="pr"><small>под ключ</small><b>от 790 BYN</b></div><a class="btn btn-line" href="#quiz" data-quiz data-pick="w3">Рассчитать мои окна</a></article>
+      <article class="pc"><div class="draw"><svg fill="none" stroke="#15171A" stroke-width="2.2"><use href="#wb"/></svg></div><h3>Балконная группа</h3><div class="size">2150 × 2020 мм</div><ul><li>Монтаж и демонтаж</li><li>Отлив и подоконник</li><li>Доставка и замер</li></ul><div class="pr"><small>под ключ</small><b>от 850 BYN</b></div><a class="btn btn-line" href="#quiz" data-quiz data-pick="wb">Рассчитать мои окна</a></article>
+    </div>
+
+    <div class="compare reveal" role="table" aria-label="Сравнение с типичным предложением">
+      <div class="cmp-row h" role="row"><div>Что важно</div><div>Обычно на рынке</div><div class="us">Houselux</div></div>
+      <div class="cmp-row" role="row"><div class="k">Цена на сайте</div><div class="them">«от 85–190 BYN» — без монтажа и подоконника, или «после замера»</div><div class="us">Цена под ключ: замер, доставка, демонтаж, монтаж, отлив, подоконник</div></div>
+      <div class="cmp-row" role="row"><div class="k">После замера</div><div class="them">Точная цена — «после замера», заранее не известна</div><div class="us">Фиксированная цена — без доплат после замера</div></div>
+      <div class="cmp-row" role="row"><div class="k">Срок</div><div class="them">7–10 рабочих дней только на изготовление, монтаж — отдельно</div><div class="us">До 7 дней от замера до установки, монтаж в день доставки</div></div>
+      <div class="cmp-row" role="row"><div class="k">Стеклопакет</div><div class="them">Уточняйте у продавца</div><div class="us">Энергосберегающий — бесплатно вместо стандартного</div></div>
+      <div class="cmp-row" role="row"><div class="k">Скидки</div><div class="them">«−45%… −63% только 7 дней» от завышенной цены</div><div class="us">Честная цена сразу + 10% льготным категориям</div></div>
+      <div class="cmp-note">По открытым данным с сайтов 11 компаний Минска, октябрь 2026.</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. КВИЗ: главная точка конверсии -->
+<section class="s quiz-sec" id="quiz">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div class="eyebrow">Расчёт за 1 минуту</div>
+      <h2>Ответьте на 5 вопросов — увидите цену сразу</h2>
+      <p>Без звонка. Цена считается по нашему прайсу под ключ. Точный расчёт пришлём туда, где вам удобно.</p>
+    </div>
+    <div class="quiz">
+      <form class="qbox" id="qform" onsubmit="return qSubmit(event)" novalidate>
+        <div class="qprog"><div class="qbar"><i id="qbar"></i></div><span id="qnum">Шаг 1 из 5</span></div>
+
+        <div class="qstep on" data-step="0">
+          <h3>Куда ставим окна?</h3>
+          <p class="hint">От этого зависит тип монтажа и профиль.</p>
+          <div class="opts" data-single="place">
+            <button type="button" class="opt" data-v="Квартира"><svg><use href="#i-flat"/></svg><b>Квартира</b><small>панель, кирпич, монолит</small></button>
+            <button type="button" class="opt" data-v="Дом"><svg><use href="#i-house"/></svg><b>Дом или дача</b><small>коттедж, веранда, терраса</small></button>
+            <button type="button" class="opt" data-v="Коммерческое помещение"><svg><use href="#i-office"/></svg><b>Коммерческое</b><small>офис, магазин, склад</small></button>
+          </div>
+        </div>
+
+        <div class="qstep" data-step="1">
+          <h3>Что нужно остеклить?</h3>
+          <p class="hint">Укажите количество — цена справа пересчитается сразу.</p>
+          <div class="items" id="qitems"></div>
+        </div>
+
+        <div class="qstep" data-step="2">
+          <h3>Что добавить?</h3>
+          <p class="hint">Энергосберегающий стеклопакет уже в подарке.</p>
+          <div class="gift"><svg><use href="#i-gift"/></svg><div><b>Энергосберегающий стеклопакет — бесплатно</b><br>Ставим вместо стандартного во все окна заказа.</div></div>
+          <label class="toggle"><input type="checkbox" id="qslopes"><span><b>Тёплые откосы</b><small>Убирают сквозняки по периметру проёма · от 100 BYN</small></span></label>
+          <label class="toggle"><input type="checkbox" id="qlam"><span><b>Ламинация в цвет</b><small>Под дерево, антрацит или любой цвет · цена после выбора цвета</small></span></label>
+        </div>
+
+        <div class="qstep" data-step="3">
+          <h3>Когда нужны окна?</h3>
+          <p class="hint">Подберём ближайшую дату замера — можно в выходные.</p>
+          <div class="opts" data-single="when">
+            <button type="button" class="opt" data-v="Как можно скорее"><svg><use href="#i-fast"/></svg><b>Как можно скорее</b><small>замер в ближайшие дни</small></button>
+            <button type="button" class="opt" data-v="В течение месяца"><svg><use href="#i-cal"/></svg><b>В течение месяца</b><small>планирую ремонт</small></button>
+            <button type="button" class="opt" data-v="Пока сравниваю"><svg><use href="#i-eye"/></svg><b>Пока сравниваю</b><small>хочу понять цену</small></button>
+          </div>
+          <label class="toggle"><input type="checkbox" id="qdisc"><span><b>Есть право на скидку 10%</b><small>Многодетные семьи, пенсионеры, люди с инвалидностью, участники ВОВ</small></span></label>
+        </div>
+
+        <div class="qstep" data-step="4">
+          <h3>Куда прислать точный расчёт?</h3>
+          <p class="hint">Менеджер проверит размеры и закрепит цену. Без спама и навязчивых звонков.</p>
+          <div class="ch" data-single="via">
+            <button type="button" class="opt on" data-v="Viber"><svg><use href="#i-vb"/></svg><b>Viber</b></button>
+            <button type="button" class="opt" data-v="Telegram"><svg><use href="#i-tg"/></svg><b>Telegram</b></button>
+            <button type="button" class="opt" data-v="Звонок"><svg><use href="#i-ph"/></svg><b>Звонок</b></button>
+          </div>
+          <input class="field" id="qname" placeholder="Как к вам обращаться" autocomplete="name" aria-label="Имя">
+          <input class="field" id="qtel" type="tel" placeholder="+375 (__) ___-__-__" autocomplete="tel" aria-label="Телефон" required>
+          <p class="agree">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</p>
+        </div>
+
+        <div class="qstep" data-step="5">
+          <div class="done">
+            <div class="ok"><svg viewBox="0 0 24 24"><path d="m5 12 5 5 9-10"/></svg></div>
+            <h3>Расчёт закреплён за вами</h3>
+            <p class="hint" style="margin-top:8px">Это демо: в рабочей версии заявка сразу уходит менеджеру.</p>
+            <ol class="next-steps">
+              <li>Менеджер напишет в выбранный мессенджер и уточнит размеры.</li>
+              <li>Замерщик приедет бесплатно — в удобный день, даже в выходные — и привезёт образцы.</li>
+              <li>Фиксируем цену в договоре. Окна — до 7 дней, монтаж в день доставки.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="qfoot" id="qfoot">
+          <button type="button" class="back" id="qback" hidden>← Назад</button>
+          <span class="qmini">от <b id="qsum2">0</b> BYN</span>
+          <button type="button" class="btn btn-warm step-btn" id="qnext">Дальше →</button>
+        </div>
+      </form>
+
+      <aside class="live" aria-live="polite">
+        <small>Ваша цена под ключ</small>
+        <div class="sum"><span>от</span><output id="qsum">0</output> BYN</div>
+        <div class="inst">или <b id="qinst">0 BYN</b> в месяц — рассрочка 0% на 3 месяца</div>
+        <ul id="qlist"><li class="empty">Выберите окна на шаге 2</li></ul>
+        <p class="fine">Цены «от» по прайсу Houselux. Точную сумму закрепит замерщик — после этого она не меняется.</p>
+        <div class="lock"><svg><use href="#i-lock"/></svg>Цена фиксируется в договоре</div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- 4. ПОЧЕМУ ТЕПЛО: рациональное доказательство -->
+<section class="s" id="warm">
+  <div class="wrap warm-grid">
+    <div class="profile reveal">
+      <svg viewBox="0 0 520 440" font-family="Manrope,sans-serif" aria-label="Разрез окна: профиль и стеклопакет">
+        <defs>
+          <linearGradient id="heat" x1="0" x2="1"><stop offset="0" stop-color="#E0761C"/><stop offset="1" stop-color="#F4A646" stop-opacity="0"/></linearGradient>
+          <linearGradient id="cold" x1="1" x2="0"><stop offset="0" stop-color="#3E6FE0"/><stop offset="1" stop-color="#3E6FE0" stop-opacity="0"/></linearGradient>
+        </defs>
+        <rect x="0" y="40" width="120" height="360" fill="url(#cold)" opacity=".18"/>
+        <rect x="400" y="40" width="120" height="360" fill="url(#heat)" opacity=".22" transform="rotate(180 460 220)"/>
+        <text x="20" y="30" font-size="13" font-weight="800" fill="#3E6FE0">УЛИЦА −20°</text>
+        <text x="410" y="30" font-size="13" font-weight="800" fill="#E0761C">ДОМ +22°</text>
+        <!-- стеклопакет: 3 стекла -->
+        <g>
+          <rect x="196" y="40" width="10" height="230" fill="#BFD8F2" stroke="#15171A" stroke-width="1.5"/>
+          <rect x="246" y="40" width="10" height="230" fill="#BFD8F2" stroke="#15171A" stroke-width="1.5"/>
+          <rect x="296" y="40" width="10" height="230" fill="#F8D9B5" stroke="#E0761C" stroke-width="2"/>
+          <rect x="206" y="250" width="40" height="14" fill="#9AA0A8"/><rect x="256" y="250" width="40" height="14" fill="#9AA0A8"/>
+        </g>
+        <!-- профиль 70 мм с камерами -->
+        <g stroke="#15171A" stroke-width="2" fill="#fff">
+          <path d="M170 270h170v120H170z"/>
+          <path d="M184 284h30v40h-30zM222 284h36v40h-36zM266 284h30v40h-30zM304 284h24v40h-24zM184 334h56v42h-56zM248 334h80v42h-80z"/>
+        </g>
+        <path d="M180 270v-12h12M330 270v-12h-12" stroke="#15171A" stroke-width="3" fill="none"/>
+        <circle cx="192" cy="262" r="5" fill="#15171A"/><circle cx="318" cy="262" r="5" fill="#15171A"/>
+        <!-- размерная линия 70 мм -->
+        <g stroke="#6A6E75" stroke-width="1.2"><path d="M170 405h170M170 398v14M340 398v14"/></g>
+        <text x="236" y="428" font-size="14" font-weight="800" fill="#15171A">70 мм</text>
+        <!-- выноски -->
+        <g font-size="13" fill="#15171A" font-weight="700">
+          <path d="M301 110H336" stroke="#E0761C" stroke-width="1.5"/><circle cx="301" cy="110" r="4" fill="#E0761C"/>
+          <text x="342" y="98">Энергосберегающее</text><text x="342" y="114">стекло —</text><text x="342" y="130" fill="#E0761C">бесплатно</text>
+          <path d="M226 180H140" stroke="#15171A" stroke-width="1.2"/><circle cx="226" cy="180" r="4"/>
+          <text x="10" y="176">Двухкамерный</text><text x="10" y="192">стеклопакет: 3 стекла</text>
+          <path d="M318 262H372v40" stroke="#15171A" stroke-width="1.2" fill="none"/>
+          <text x="380" y="300">Уплотнители по</text><text x="380" y="316">всему контуру</text>
+          <path d="M184 355H120" stroke="#15171A" stroke-width="1.2"/>
+          <text x="10" y="351">Многокамерный</text><text x="10" y="367">профиль</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <div class="s-head reveal" style="margin-bottom:28px">
+        <div class="eyebrow">Почему тепло</div>
+        <h2>Хватит отапливать улицу</h2>
+        <p>Современный профиль и энергосберегающий стеклопакет держат тепло дома, а шум и холод — снаружи.</p>
+      </div>
+      <div class="benefits reveal">
+        <div class="bn"><b>−30–50%</b><div><h3>Меньше теплопотерь</h3><p>Ниже счета за отопление уже в первую зиму.</p></div></div>
+        <div class="bn"><b>−35 дБ</b><div><h3>Тише дома</h3><p>Шум улицы почти не слышен — как будто закрыли вторую дверь.</p></div></div>
+        <div class="bn"><b>0</b><div><h3>Конденсата на стекле</h3><p>Внутреннее стекло остаётся тёплым — подоконник сухой.</p></div></div>
+        <div class="bn"><b>УФ</b><div><h3>Фильтр от выгорания</h3><p>Мебель, полы и обои не выцветают на солнце.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. ПРОЦЕСС: снимаем страх «долго и грязно» -->
+<section class="s" id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div class="eyebrow">Как работаем</div>
+      <h2>От заявки до тёплых окон — до 7 дней</h2>
+      <p>Это в 2 раза быстрее, чем обычно на рынке. Монтаж — точно в день доставки.</p>
+    </div>
+    <div class="days reveal">
+      <div class="day"><div class="dn"><span>день<b>1</b></span></div><h3>Заявка</h3><p>Оставляете заявку или проходите расчёт. Перезваниваем в рабочее время.</p></div>
+      <div class="day"><div class="dn"><span>день<b>1–2</b></span></div><h3>Бесплатный замер</h3><p>Приезжаем даже в выходные, привозим образцы и подбираем окна под бюджет.</p></div>
+      <div class="day"><div class="dn"><span>день<b>2</b></span></div><h3>Договор</h3><p>Фиксируем цену. После замера она не меняется — без доплат.</p></div>
+      <div class="day"><div class="dn"><span>до дня<b>7</b></span></div><h3>Монтаж под ключ</h3><p>Демонтаж с уборкой, монтаж по ГОСТу, тройная проверка герметичности, отлив и подоконник.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. НАПРАВЛЕНИЯ: расширяем чек -->
+<section class="s" style="padding-top:0">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <div class="eyebrow">Не только окна</div>
+      <h2>Остеклим всё — от балкона до коттеджа</h2>
+    </div>
+    <div class="dirs reveal">
+      <a class="dir" href="#quiz" data-quiz data-pick="bal"><div class="art"><svg viewBox="0 0 320 170" fill="none" stroke="#15171A" stroke-width="2"><rect width="320" height="170" fill="#ECE6DC" stroke="none"/><use href="#wl" x="80" y="30" width="160" height="110"/><path d="M60 140h200" stroke-width="3"/></svg></div><div class="bd"><h3>Балконы и лоджии</h3><p>Тёплое и холодное остекление, отделка.</p><div class="from">под ключ <span>от 950 BYN</span></div></div></a>
+      <a class="dir" href="#quiz" data-quiz data-pick="pan"><div class="art"><svg viewBox="0 0 320 170" fill="none" stroke="#15171A" stroke-width="2"><rect width="320" height="170" fill="#ECE6DC" stroke="none"/><use href="#wp" x="80" y="30" width="160" height="110"/><path d="M40 140h240" stroke-width="3"/></svg></div><div class="bd"><h3>Коттеджи и панорамы</h3><p>Дома, веранды, террасы, беседки, панорамное остекление.</p><div class="from">за м² <span>от 150 BYN</span></div></div></a>
+      <a class="dir" href="#quiz" data-quiz data-pick="door"><div class="art"><svg viewBox="0 0 320 170" fill="none" stroke="#15171A" stroke-width="2"><rect width="320" height="170" fill="#ECE6DC" stroke="none"/><use href="#wd" x="120" y="20" width="80" height="130"/><path d="M80 150h160" stroke-width="3"/></svg></div><div class="bd"><h3>Двери ПВХ и алюминий</h3><p>Входные, балконные и офисные двери.</p><div class="from">под ключ <span>от 450 BYN</span></div></div></a>
+    </div>
+  </div>
+</section>
+
+<!-- 7. ЦВЕТ: вовлечение -->
+<section class="s" style="padding-top:0">
+  <div class="wrap colors">
+    <div class="cwin reveal" id="cwin">
+      <svg viewBox="0 0 300 330" aria-label="Окно в выбранном цвете">
+        <rect x="10" y="10" width="280" height="290" rx="4" class="fr" id="frame" fill="#F4F4F2" stroke="#15171A" stroke-opacity=".25" stroke-width="2"/>
+        <rect x="32" y="32" width="112" height="246" fill="#CFE2F3"/><rect x="156" y="32" width="112" height="246" fill="#CFE2F3"/>
+        <path d="M40 60l40-28M48 100l80-60M170 70l60-38" stroke="#fff" stroke-width="5" opacity=".7"/>
+        <rect x="144" y="10" width="12" height="290" class="fr" id="mull" fill="#F4F4F2"/>
+        <rect x="246" y="140" width="8" height="40" rx="3" fill="#B9BDC3"/>
+        <rect x="0" y="300" width="300" height="22" rx="3" fill="#FFFFFF" stroke="#15171A" stroke-opacity=".15"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Ламинация</div>
+      <h2 style="font-size:clamp(32px,4vw,54px);margin-top:14px">Окна в цвет вашего интерьера</h2>
+      <p style="font-size:18px;color:#4A4E55;margin-top:14px">Ламинация имитирует дерево и не выгорает. Выберите оттенок — покажем образцы на замере.</p>
+      <div class="sws" id="sws">
+        <button class="sw on" style="background:#F4F4F2" data-c="#F4F4F2" data-n="Белый" aria-label="Белый"></button>
+        <button class="sw" style="background:#C8924F" data-c="#C8924F" data-n="Золотой дуб" aria-label="Золотой дуб"></button>
+        <button class="sw" style="background:#7A4A2A" data-c="#7A4A2A" data-n="Орех" aria-label="Орех"></button>
+        <button class="sw" style="background:#4A2E22" data-c="#4A2E22" data-n="Мореный дуб" aria-label="Мореный дуб"></button>
+        <button class="sw" style="background:#3A3F44" data-c="#3A3F44" data-n="Антрацит" aria-label="Антрацит"></button>
+        <button class="sw" style="background:#E8DCC6" data-c="#E8DCC6" data-n="Слоновая кость" aria-label="Слоновая кость"></button>
+      </div>
+      <div class="swname" id="swname">Белый</div>
+      <a class="btn btn-ink" href="#quiz" data-quiz style="margin-top:24px">Рассчитать с ламинацией</a>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ОПЛАТА -->
+<section class="s" style="padding-top:0">
+  <div class="wrap pay reveal">
+    <div class="p1"><b><span>0%</span> на 3 месяца</b><h3>Рассрочка без переплаты</h3><p>Двустворчатое окно под ключ — от 197 BYN в месяц. Платите частями, тепло получаете сразу.</p></div>
+    <div class="p2"><b>−10%</b><h3>Скидка льготным категориям</h3><p>Для многодетных семей, пенсионеров, людей с инвалидностью и участников ВОВ.</p></div>
+  </div>
+</section>
+
+<!-- 9. FAQ: закрываем возражения -->
+<section class="s" id="faq" style="padding-top:0">
+  <div class="wrap faq-wrap">
+    <div class="s-head reveal"><div class="eyebrow">Вопросы</div><h2>Отвечаем честно</h2><p>Если не нашли ответ — напишите в Viber или Telegram, ответим в рабочее время.</p></div>
+    <div class="faq reveal">
+      <details open><summary>Изменится ли цена после замера?</summary><p>Нет. Цена фиксируется в договоре — без доплат после замера. Замерщик только уточняет размеры и помогает выбрать окна под ваш бюджет.</p></details>
+      <details><summary>Что входит в цену?</summary><p>Замер, доставка, демонтаж старого окна с уборкой, монтаж по ГОСТу с тройной проверкой герметичности, отлив и подоконник. Энергосберегающий стеклопакет ставим бесплатно вместо стандартного.</p></details>
+      <details><summary>Сколько ждать окна?</summary><p>От замера до установки — до 7 дней. Монтаж — точно в день доставки.</p></details>
+      <details><summary>Можно ли рассчитать цену без замерщика?</summary><p>Да, примерную цену покажет калькулятор выше. Но замерщик бесплатно уточнит размеры и подберёт оптимальный вариант — так цена будет точной.</p></details>
+      <details><summary>Можно оплатить в рассрочку?</summary><p>Да, рассрочка 0% до 3 месяцев.</p></details>
+      <details><summary>Остекляете частные дома и дачи?</summary><p>Да: загородные дома, балконы, веранды, террасы и беседки. Делаем холодное и тёплое остекление.</p></details>
+      <details><summary>Какая гарантия?</summary><p>2 года — без скрытых условий.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- 10. ФИНАЛЬНЫЙ ЗАХВАТ -->
+<section class="s" id="lead" style="padding-top:0">
+  <div class="wrap">
+    <div class="final reveal">
+      <div>
+        <h2>Тёплые окна до холодов — замер уже на этой неделе</h2>
+        <p>Оставьте телефон — подберём удобный день для бесплатного замера, даже в выходные.</p>
+      </div>
+      <form onsubmit="return leadSubmit(event)">
+        <input class="field" type="tel" placeholder="+375 (__) ___-__-__" aria-label="Телефон" required>
+        <button class="btn btn-warm" type="submit">Вызвать замерщика бесплатно</button>
+        <p class="agree">Или напишите: <a href="viber://chat?number=375295672453" style="color:#fff;font-weight:700">Viber</a> · <a href="https://telegram.me/houselux_by" target="_blank" rel="noopener" style="color:#fff;font-weight:700">Telegram</a> · <a href="tel:+375295672453" style="color:#fff;font-weight:700">+375 29 567-24-53</a></p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <div><img src="assets/logo.png" alt="Houselux"><p>ИП Боровский Виталий Борисович<br>УНП 191230690</p></div>
+    <div><h4>Контакты</h4><p>г. Минск, ул. Иодковская, 24<br><a href="tel:+375295672453">+375 29 567-24-53</a><br><a href="tel:+375293855670">+375 29 385-56-70</a><br>ежедневно 9:00–20:00</p></div>
+    <div><h4>Услуги</h4><p>Окна ПВХ · Балконные группы<br>Балконы и лоджии · Двери<br>Остекление коттеджей · Тёплые откосы</p></div>
+  </div>
+</footer>
+
+<div class="mbar"><a class="call" href="tel:+375295672453" aria-label="Позвонить"><svg><use href="#i-ph"/></svg></a><a class="vb" href="viber://chat?number=375295672453" aria-label="Viber"><svg><use href="#i-vb"/></svg></a><a class="btn btn-warm" href="#quiz" data-quiz>Рассчитать цену</a></div>
+
+<div class="resume" id="resume"><span>Ваш расчёт: <b id="rstep">шаг 2 из 5</b></span><a class="btn btn-warm" href="#quiz">Продолжить</a></div>
+
+<div class="modal" id="exit" role="dialog" aria-modal="true" aria-labelledby="exitT">
+  <div class="mbox">
+    <button class="x" id="exitX" aria-label="Закрыть">×</button>
+    <div class="eyebrow">Пока не ушли</div>
+    <h3 id="exitT">Пришлём цены под ключ в мессенджер</h3>
+    <p>Без звонков: прайс на окна с монтажом, отливом и подоконником — чтобы спокойно сравнить дома.</p>
+    <div class="row">
+      <a class="btn btn-ink" href="viber://chat?number=375295672453" style="background:#7360F2">Viber</a>
+      <a class="btn btn-ink" href="https://telegram.me/houselux_by" target="_blank" rel="noopener" style="background:#29A9EB">Telegram</a>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     KP: «Было / Стало» + рынок
+     ========================================================= -->
+<section class="kp" id="kp">
+  <div class="wrap">
+    <div class="kp-top">
+      <h2>Конкуренты кричат <span>скидками.</span><br>Вы выигрываете честной ценой.</h2>
+      <div class="kp-contacts"><a class="cphone" href="tel:+375295708247">+375 29 570-82-47</a><a class="cico tg" href="https://t.me/Alexander_SN" target="_blank" rel="noopener" aria-label="Telegram @Alexander_SN"><svg viewBox="0 0 24 24"><use href="#i-tg"/></svg></a><a class="cico vb" href="viber://chat?number=%2B375295708247" aria-label="Viber +375 29 570-82-47"><svg viewBox="0 0 24 24"><use href="#i-vb"/></svg></a></div>
+    </div>
+    <div class="market">
+      <div><b>11 сайтов</b>конкурентов в Минске проверено</div>
+      <div><b>−20…−63%</b>«скидки» на первом экране у многих</div>
+      <div><b>8–17 с</b>загрузка на телефоне у 9 из 11</div>
+      <div><b>«от 85»</b>цены без монтажа или «после замера»</div>
+    </div>
+    <div class="usp-box"><b>Ваше УТП</b><p>Тёплые окна под ключ за 7 дней. Цена на сайте — полная и не растёт после замера.</p></div>
+    <div class="kp-grid">
+      <div>
+        <span class="col-lbl was">● Сейчас</span>
+        <div class="old">
+          <div class="browser"><div class="bar"><i></i><i></i><i></i><span>okna.houselux.by</span></div><img src="assets/old-site.jpg" alt="Текущая главная okna.houselux.by"></div>
+          <div class="phone"><img src="assets/old-mobile.jpg" alt="Текущая мобильная версия"></div>
+          <span class="pin" style="left:8%;top:42%">1</span>
+          <span class="pin" style="left:46%;top:58%">2</span>
+          <span class="pin" style="left:30%;top:10%">3</span>
+          <span class="pin" style="right:6%;top:60%">4</span>
+        </div>
+        <ul class="issues">
+          <li><b>1</b><span><strong>Сильные аргументы спрятаны.</strong> «Цена без доплат после замера» и «до 7 дней» — в середине страницы, мелким текстом.</span></li>
+          <li><b>2</b><span><strong>Цена «под ключ» не читается как преимущество.</strong> Её не сравнить с «от 85 BYN» у конкурентов.</span></li>
+          <li><b>3</b><span><strong>Стоковые фото</strong> (dreamstime, freepik) — сайт похож на десятки других.</span></li>
+          <li><b>4</b><span><strong>Квиз без цены:</strong> человек отвечает на вопросы, но не видит результата — и уходит.</span></li>
+        </ul>
+        <div class="metrics">
+          <div class="metric"><b>8,7 с</b><span>загрузка на телефоне</span></div>
+          <div class="metric"><b>4,2 с</b><span>до первого контента</span></div>
+          <div class="metric"><b>141</b><span>запрос к серверу</span></div>
+          <div class="metric"><b>5,0 МБ</b><span>вес главной</span></div>
+        </div>
+        <p class="note" style="color:#8A93A1">Замер 30.10.2026, мобильная эмуляция (iPhone 13), без ограничения скорости сети.</p>
+      </div>
+      <div>
+        <span class="col-lbl will">● После апгрейда</span>
+        <div class="will-card">
+          <h3>Воронка, которая ведёт <span>от сомнения к замеру</span></h3>
+          <p class="usp">Каждый блок отвечает на один страх клиента и ведёт к расчёту: «дорого?» → «а потом доплаты?» → «долго?» → «а тепло ли?».</p>
+          <div class="phase">
+            <div class="phase-h"><b>01</b><span>Визуал и смысл</span></div>
+            <div class="feat">
+              <div><strong>Оффер с цифрами</strong><p>«7 дней» и «цена не растёт» — в заголовке.</p></div>
+              <div><strong>Тепловизор до/после</strong><p>Свои иллюстрации вместо стока — тепло видно.</p></div>
+              <div><strong>Сравнение с рынком</strong><p>Почему «от 590 под ключ» выгоднее «от 85».</p></div>
+              <div><strong>Скорость</strong><p>Без тяжёлых картинок: цель — загрузка до 2 с.</p></div>
+            </div>
+          </div>
+          <div class="phase">
+            <div class="phase-h"><b>02</b><span>Воронка и удержание</span></div>
+            <div class="feat">
+              <div><strong>Квиз с живой ценой</strong><p>Цена и платёж в рассрочку видны на каждом шаге.</p></div>
+              <div><strong>Выбор мессенджера</strong><p>Viber, Telegram или звонок — меньше отказов.</p></div>
+              <div><strong>«Продолжить расчёт»</strong><p>Прогресс сохраняется, напоминание при уходе с квиза.</p></div>
+              <div><strong>Мягкий exit-intent</strong><p>Прайс в мессенджер вместо агрессивных попапов.</p></div>
+            </div>
+          </div>
+          <div class="kp-cta">
+            <a class="btn" href="https://t.me/Alexander_SN" target="_blank" rel="noopener">Обсудить проект →</a>
+            <div class="kp-contacts dark-c"><a class="cphone" href="tel:+375295708247">+375 29 570-82-47</a><a class="cico tg" href="https://t.me/Alexander_SN" target="_blank" rel="noopener" aria-label="Telegram"><svg viewBox="0 0 24 24"><use href="#i-tg"/></svg></a><a class="cico vb" href="viber://chat?number=%2B375295708247" aria-label="Viber"><svg viewBox="0 0 24 24"><use href="#i-vb"/></svg></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- тепловизор до/после ---------- */
+(function(){
+  const box=$("#thermo"),knob=$("#knob");let drag=false;
+  const set=p=>{p=Math.max(4,Math.min(96,p));box.style.setProperty("--pos",p+"%");knob.setAttribute("aria-valuenow",Math.round(p))};
+  const fromX=x=>{const r=box.getBoundingClientRect();set((x-r.left)/r.width*100)};
+  box.addEventListener("pointerdown",e=>{drag=true;box.setPointerCapture(e.pointerId);fromX(e.clientX)});
+  box.addEventListener("pointermove",e=>{if(drag)fromX(e.clientX)});
+  box.addEventListener("pointerup",()=>drag=false);
+  knob.addEventListener("keydown",e=>{const p=parseFloat(getComputedStyle(box).getPropertyValue("--pos"));if(e.key==="ArrowLeft")set(p-5);if(e.key==="ArrowRight")set(p+5)});
+  // подсказка движением: один раз показываем, что ползунок двигается
+  if(!reduce){let t=0;const a=()=>{t+=1;set(50+Math.sin(t/14)*16);if(t<90&&!drag)requestAnimationFrame(a);else if(!drag)set(50)};setTimeout(()=>requestAnimationFrame(a),900)}
+})();
+
+/* ---------- квиз ---------- */
+const ITEMS=[
+ {id:"w1",name:"Одностворчатое окно",size:"1430×650",price:250,ico:"#w1"},
+ {id:"w2",name:"Двустворчатое окно",size:"1430×1150",price:590,ico:"#w2"},
+ {id:"w3",name:"Трёхстворчатое окно",size:"1430×2020",price:790,ico:"#w3"},
+ {id:"wb",name:"Балконная группа",size:"2150×2020",price:850,ico:"#wb"},
+ {id:"bal",name:"Балкон или лоджия",size:"остекление",price:950,ico:"#wl"},
+ {id:"door",name:"Дверь ПВХ или алюминий",size:"входная, балконная",price:450,ico:"#wd"},
+ {id:"pan",name:"Панорама / коттедж",size:"за м²",price:150,ico:"#wp",unit:"м²",step:5},
+];
+const st=Object.assign({step:0,place:"",when:"",via:"Viber",n:{},slopes:false,lam:false,disc:false},store.get("hl-quiz")||{});
+const N=5;
+$("#qitems").innerHTML=ITEMS.map(it=>`<div class="it" data-id="${it.id}"><svg viewBox="0 0 160 130"><use href="${it.ico}"/></svg><div><b>${it.name}</b><small>${it.size} · от ${it.price} BYN${it.unit?" за "+it.unit:""}</small></div><div class="cnt"><button type="button" data-d="-1" aria-label="Меньше">−</button><output>0</output><button type="button" data-d="1" aria-label="Больше">+</button></div></div>`).join("");
+$("#qitems").addEventListener("click",e=>{const b=e.target.closest("button[data-d]");if(!b)return;const row=b.closest(".it"),it=ITEMS.find(x=>x.id===row.dataset.id),s=it.step||1;st.n[it.id]=Math.max(0,(st.n[it.id]||0)+(+b.dataset.d)*s);sync()});
+$$("[data-single]").forEach(g=>g.addEventListener("click",e=>{const o=e.target.closest(".opt");if(!o)return;st[g.dataset.single]=o.dataset.v;sync();if(g.dataset.single!=="via"&&st.step<4)setTimeout(()=>go(st.step+1),260)}));
+["slopes","lam","disc"].forEach(k=>$("#q"+k).addEventListener("change",e=>{st[k]=e.target.checked;sync()}));
+$("#qnext").onclick=()=>{
+  if(st.step===0&&!st.place)return nudge("Выберите вариант — это займёт секунду");
+  if(st.step===1&&!total().base)return nudge("Добавьте хотя бы одно окно — кнопкой «+»");
+  if(st.step===3&&!st.when)return nudge("Выберите срок — подберём дату замера");
+  if(st.step===4)return $("#qform").requestSubmit();
+  go(st.step+1)};
+$("#qback").onclick=()=>go(st.step-1);
+function go(i){st.step=i;sync();const top=$("#quiz").getBoundingClientRect().top;if(top<-200)$("#quiz").scrollIntoView({behavior:reduce?"auto":"smooth"})}
+function total(){let base=0;const lines=[];ITEMS.forEach(it=>{const c=st.n[it.id]||0;if(c){base+=c*it.price;lines.push([`${it.name} × ${c}${it.unit?" "+it.unit:""}`,c*it.price])}});
+  let sum=base;if(base&&st.slopes){sum+=100;lines.push(["Тёплые откосы",100])}
+  if(base)lines.push(["Энергосберегающий стеклопакет","бесплатно"]);
+  if(base&&st.disc){const d=Math.round(sum*.1);sum-=d;lines.push(["Скидка 10%",-d])}
+  return {base,sum,lines}}
+let shown=0;
+function sync(){
+  $$(".qstep").forEach(s=>s.classList.toggle("on",+s.dataset.step===st.step));
+  $("#qbar").style.width=Math.min(100,(st.step+1)/N*100)+"%";
+  $("#qnum").textContent=st.step<N?`Шаг ${st.step+1} из ${N}`:"Готово";
+  $("#qback").hidden=st.step===0||st.step>=N;
+  $("#qfoot").style.display=st.step>=N?"none":"";
+  $("#qnext").textContent=st.step===4?"Получить точный расчёт":"Дальше →";
+  $$("[data-single]").forEach(g=>[...g.children].forEach(o=>o.classList.toggle("on",o.dataset.v===st[g.dataset.single])));
+  $$("#qitems .it").forEach(r=>{const c=st.n[r.dataset.id]||0;r.querySelector("output").textContent=c;r.classList.toggle("on",c>0)});
+  ["slopes","lam","disc"].forEach(k=>$("#q"+k).checked=st[k]);
+  const t=total();
+  $("#qlist").innerHTML=t.lines.length?t.lines.map(([n,v])=>`<li class="${v==="бесплатно"?"free":""}"><span>${n}</span><span>${typeof v==="number"?(v<0?"−"+(-v):v)+" BYN":v}</span></li>`).join(""):'<li class="empty">Выберите окна на шаге 2</li>';
+  count(shown,t.sum);shown=t.sum;
+  $("#qinst").textContent=Math.ceil(t.sum/3)+" BYN";
+  store.set("hl-quiz",st);
+  $("#rstep").textContent=`шаг ${Math.min(st.step+1,N)} из ${N}`;
+}
+function count(a,b){$("#qsum2").textContent=b;if(reduce){$("#qsum").textContent=b;return}const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/500),v=Math.round(a+(b-a)*(1-Math.pow(1-k,3)));$("#qsum").textContent=v;if(k<1)requestAnimationFrame(f)})(t0)}
+function nudge(m){toast(m);const b=$("#qnext");b.animate?.([{transform:"translateX(0)"},{transform:"translateX(-6px)"},{transform:"translateX(6px)"},{transform:"translateX(0)"}],{duration:300})}
+function qSubmit(e){e.preventDefault();const tel=$("#qtel").value.replace(/\D/g,"");if(tel.length<9){nudge("Укажите телефон — пришлём расчёт");$("#qtel").focus();return false}st.step=N;st.sent=true;sync();return false}
+function leadSubmit(e){e.preventDefault();toast("Демо: в рабочей версии заявка на замер сразу уходит менеджеру ✓");return false}
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove("show"),3000)}
+// кнопки «Рассчитать» на карточках сразу добавляют окно и ведут ко 2-му шагу
+$$("[data-quiz]").forEach(a=>a.addEventListener("click",()=>{const p=a.dataset.pick;if(p&&st.step<N){if(!(st.n[p]))st.n[p]=ITEMS.find(x=>x.id===p).step||1;if(!st.place)st.place="Квартира";st.step=Math.max(st.step,1);sync()}}));
+sync();
+
+/* ---------- удержание: «продолжить расчёт» и мягкий exit-intent ---------- */
+const resume=$("#resume");
+new IntersectionObserver(([e])=>{const started=st.step>0&&st.step<N;resume.classList.toggle("show",started&&!e.isIntersecting&&e.boundingClientRect.top>-99999)}).observe($("#quiz"));
+let exitShown=false;try{exitShown=sessionStorage.getItem("hl-exit")==="1"}catch(e){}
+function showExit(){if(exitShown||st.sent)return;exitShown=true;try{sessionStorage.setItem("hl-exit","1")}catch(e){}$("#exit").classList.add("show")}
+if(matchMedia("(pointer:fine)").matches)document.addEventListener("mouseout",e=>{if(!e.relatedTarget&&e.clientY<8&&scrollY>600)showExit()});
+$("#exitX").onclick=()=>$("#exit").classList.remove("show");
+$("#exit").addEventListener("click",e=>{if(e.target.id==="exit")$("#exit").classList.remove("show")});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#exit").classList.remove("show")});
+
+/* ---------- цвет окна ---------- */
+$("#sws").addEventListener("click",e=>{const b=e.target.closest(".sw");if(!b)return;$$(".sw").forEach(x=>x.classList.toggle("on",x===b));$("#frame").setAttribute("fill",b.dataset.c);$("#mull").setAttribute("fill",b.dataset.c);$("#swname").textContent=b.dataset.n;st.lam=b.dataset.n!=="Белый";sync()});
+
+/* ---------- шапка и появление блоков ---------- */
+addEventListener("scroll",()=>$("#hdr").classList.toggle("scrolled",scrollY>10),{passive:true});
+if(!reduce){const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.remove("pre");io.unobserve(x.target)}}),{threshold:.08});
+$$(".reveal").forEach(el=>{if(el.getBoundingClientRect().top>innerHeight){el.classList.add("pre");io.observe(el)}})}
+</script>
+</body>
+</html>
