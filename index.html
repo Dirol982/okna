@@ -317,6 +317,41 @@ section.s{padding:110px 0}
 .toast.show{visibility:visible;transform:translate(-50%,0)}
 .mbar{display:none}
 
+
+/* ===== Светлая версия: те же блоки без тёмных плашек ===== */
+.theme-light .topline{background:var(--paper-2);color:#4A4E55}
+.theme-light .topline b{color:var(--ink)}
+.theme-light .quiz-sec{background:#FBF8F3;color:var(--ink);border-block:1px solid var(--line)}
+.theme-light .quiz-sec::before{background:radial-gradient(circle,rgba(224,118,28,.16),transparent 65%)}
+.theme-light .quiz-sec .s-head p,.theme-light .qprog span,.theme-light .qstep .hint,.theme-light .opt small,.theme-light .it small,.theme-light .toggle small,.theme-light .back,.theme-light .qmini{color:var(--muted)}
+.theme-light .qbox{background:#fff;border-color:var(--line);box-shadow:0 30px 60px -40px rgba(21,23,26,.35)}
+.theme-light .qbar{background:var(--paper-2)}
+.theme-light .opt,.theme-light .it,.theme-light .toggle{background:var(--paper);border-color:var(--line);color:var(--ink)}
+.theme-light .opt:hover{border-color:rgba(21,23,26,.3)}
+.theme-light .opt.on{background:var(--warm-soft);border-color:var(--warm)}
+.theme-light .opt svg,.theme-light .it svg{stroke:var(--ink)}
+.theme-light .ch .opt svg{fill:var(--ink)}
+.theme-light .cnt button{border-color:rgba(21,23,26,.2);color:var(--ink)}
+.theme-light .cnt button:hover{border-color:var(--ink)}
+.theme-light .toggle input{background:rgba(21,23,26,.15)}
+.theme-light .toggle input:checked{background:var(--warm)}
+.theme-light .field{background:var(--paper);border-color:var(--line);color:var(--ink)}
+.theme-light .gift{color:var(--ink)}
+.theme-light .back:hover{color:var(--ink)}
+.theme-light .qmini b{color:var(--ink)}
+.theme-light .agree{color:var(--muted)}
+.theme-light .next-steps li{color:#43474D}
+.theme-light .next-steps li::before{background:var(--paper-2)}
+.theme-light .live{background:var(--warm-soft)}
+.theme-light .pay .p1{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.theme-light .pay .p1 b span{color:var(--warm)}
+.theme-light .final{background:var(--warm-soft);color:var(--ink)}
+.theme-light .final::after{background:radial-gradient(circle,rgba(224,118,28,.22),transparent 65%)}
+.theme-light .final p{color:#4A4E55}
+.theme-light .final form{background:#fff;box-shadow:0 30px 60px -40px rgba(21,23,26,.35)}
+.theme-light .final .field{background:var(--paper)}
+.theme-light .final .agree a{color:var(--ink)!important}
+
 /* KP в фирменном тёплом цвете */
 .kp{--accent:#E0761C;--accent-2:#B85E12}
 .kp .will-card::after{background:radial-gradient(circle,rgba(224,118,28,.35),transparent 70%)}
@@ -415,6 +450,7 @@ section.s{padding:110px 0}
   </defs>
 </svg>
 
+<!--@SWITCHER:start--><nav class="cswitch" aria-label="Версии концепта"><div class="cs-in"><span class="cs-lbl">Версия</span><a href="./" class="on" aria-current="page"><b>01</b>С тёмными акцентами</a><a href="light.html"><b>02</b>Светлая</a><a class="cs-kp" href="#kp">Было / стало ↓</a></div></nav><!--@SWITCHER:end-->
 <div class="topline"><div class="wrap">
   <span>Замер <b>бесплатно</b> — даже в выходные</span>
   <span>Работаем <b>более 15 лет</b></span>
